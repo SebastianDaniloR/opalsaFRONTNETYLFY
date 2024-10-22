@@ -6,6 +6,7 @@ export const createCasinoRequest = (FormData) => {
   return axios.post("/api/casinos", FormData, {
     headers: {
       "Content-Type": "multipart/form-data",
+      
     },
   });
 };
