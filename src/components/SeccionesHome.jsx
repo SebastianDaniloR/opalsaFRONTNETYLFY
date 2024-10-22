@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getMaquinasRequest } from "../api/maquinas";
 import { getCasinosRequest } from "../api/casinos";
-import CasinoCard from "./CasinoCard";
 import BotonAgregar from "../components/BotonAgregar";
-import MaquinaCard from "../components/MaquinaCard";
 import ModalMaquina from "../components/ModalMaquina";
-import CasinoDetail from "../components/CasinoDetail";
 import ModalDocumentos from "../components/ModalDocumentos";
 import SectionContent from "./SectionContent";
 
