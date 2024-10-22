@@ -1,9 +1,9 @@
 import axios from "./axios";
 
-export const getCasinosRequest = () => axios.get("/casinos");
-export const getCasinoRequest = (id) => axios.get(`/casinos/${id}`);
+export const getCasinosRequest = () => axios.get("/api/casinos");
+export const getCasinoRequest = (id) => axios.get(`/api/casinos/${id}`);
 export const createCasinoRequest = (FormData) => {
-  return axios.post("/casinos", FormData, {
+  return axios.post("/api/casinos", FormData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -11,7 +11,7 @@ export const createCasinoRequest = (FormData) => {
 };
 // Este método ahora recibe casinoId como primer parámetro y formData como segundo.
 export const updateCasinoRequest = (casinoId, formData) => {
-  return axios.put(`/casinos/${casinoId}`, formData, {
+  return axios.put(`/api/casinos/${casinoId}`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

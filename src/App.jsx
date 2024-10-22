@@ -20,7 +20,7 @@ import { ElementosProvider } from "./context/ElementosContext";
 import { ComponentesProvider } from "./context/ComponentesContext";
 import { NotificacionesProvider } from "./context/NotificacionesContext";
 import { CasinosProvider } from "./context/CasinosContext";
-import ProtectedAdmin from "./protectedAdmin"; // Importa el ProtectedAdmin
+import ProtectedAdmin from "./ProtectedAdmin"; // Importa el ProtectedAdmin
 
 function App() {
   return (
