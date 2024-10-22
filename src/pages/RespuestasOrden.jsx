@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import HeaderRespuestas from "../components/HeaderRespOrd";
-import ModalRespOrden from "../components/ModalRespOrde";
+import ModalRespOrden from "../components/ModalRespOrden";
 import { FaUser } from "react-icons/fa"; // Icono de usuario
 
 const RespuestasOrden = () => {
