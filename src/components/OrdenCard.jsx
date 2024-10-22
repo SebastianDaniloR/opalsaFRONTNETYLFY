@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsFileEarmarkText } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
-import ModalRespOrden from "./ModalRespOrden";
+import ModalRespOrden from "./ModalRespOrde";
 
 const OrdenCard = ({
   item,
