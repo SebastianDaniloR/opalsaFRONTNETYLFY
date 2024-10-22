@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import Navbar from "../components/Navbar";
 import MovimientoMaquinaCard from "../components/MovimientoMaquinaCard";
 import Modal from "../components/modalMantenimiento";
@@ -24,7 +24,7 @@ const Historial = () => {
 
         // Filtrar mantenimientos por número de serie o por fecha
         if (filter === "mantenimiento") {
-          response = await axios.get("http://localhost:4000/api/mantenimientos", {
+          response = await axios.get("/api/mantenimientos", {
             params: {
               page: currentPage,
               limit: ITEMS_PER_PAGE,
@@ -33,7 +33,7 @@ const Historial = () => {
             }
           });
         } else if (filter === "movimiento") {
-          response = await axios.get("http://localhost:4000/api/movimientos", {
+          response = await axios.get("/api/movimientos", {
             params: {
               page: currentPage,
               limit: ITEMS_PER_PAGE,
@@ -42,7 +42,7 @@ const Historial = () => {
             }
           });
         } else if (filter === "moviMaquina") {
-          response = await axios.get("http://localhost:4000/api/moviMaquinas", {
+          response = await axios.get("/api/moviMaquinas", {
             params: {
               page: currentPage,
               limit: ITEMS_PER_PAGE,
@@ -51,7 +51,7 @@ const Historial = () => {
             }
           });
         } else if (filter === "movimientoElemento") {
-          response = await axios.get("http://localhost:4000/api/movimientos-elementos", {
+          response = await axios.get("/api/movimientos-elementos", {
             params: {
               page: currentPage,
               limit: ITEMS_PER_PAGE,
@@ -76,13 +76,13 @@ const Historial = () => {
   const deleteItem = async (id, type) => {
     try {
       if (type === "mantenimiento") {
-        await axios.delete(`http://localhost:4000/api/mantenimientos/${id}`);
+        await axios.delete(`/api/mantenimientos/${id}`);
       } else if (type === "movimiento") {
-        await axios.delete(`http://localhost:4000/api/movimientos/${id}`);
+        await axios.delete(`/api/movimientos/${id}`);
       } else if (type === "moviMaquina") {
-        await axios.delete(`http://localhost:4000/api/moviMaquinas/${id}`);
+        await axios.delete(`/api/moviMaquinas/${id}`);
       } else if (type === "movimientoElemento") {
-        await axios.delete(`http://localhost:4000/api/movimientos-elementos/${id}`);
+        await axios.delete(`/api/movimientos-elementos/${id}`);
       }
 
       setItems(prevItems => prevItems.filter(item => item._id !== id));

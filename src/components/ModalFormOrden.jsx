@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import Select from 'react-select';
 import { useAuth } from '../context/AuthContext';
 import { useComponentes } from '../context/ComponentesContext';
@@ -28,7 +28,7 @@ const ModalOrden = ({ onClose, orden, handleAcceptOrder }) => {
     const fetchOrden = async () => {
       try {
         if (ordenId) {
-          const response = await axios.get(`http://localhost:4000/api/ordenes/${ordenId}`).then(res => res.data);
+          const response = await axios.get(`/api/ordenes/${ordenId}`).then(res => res.data);
           setDescripcionOrden(response.descripcionOrden);
           setNroSerieMaquina(response.maquina ? response.maquina.nroSerieMaquina : 'Desconocido');
           setMarcaMaquina(response.maquina ? response.maquina.marcaMaquina : 'Desconocida');
@@ -129,7 +129,7 @@ const ModalOrden = ({ onClose, orden, handleAcceptOrder }) => {
     }));
 
     try {
-      const response = await axios.put(`http://localhost:4000/api/ordenes/${ordenId}`, {
+      const response = await axios.put(`/api/ordenes/${ordenId}`, {
         fechaOrden: new Date(),
         descripcionOrden,
         nroSerieMaquina,

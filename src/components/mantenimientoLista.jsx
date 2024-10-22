@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaTools } from "react-icons/fa";
 import { CgWebsite } from "react-icons/cg";
 
@@ -10,7 +10,7 @@ const MantenimientosList = () => {
   useEffect(() => {
     const fetchMantenimientos = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/mantenimientos');
+        const response = await axios.get('/api/mantenimientos');
         console.log('Datos de mantenimientos:', response.data); // Verifica los datos recibidos
         setMantenimientos(response.data);
       } catch (error) {
@@ -23,7 +23,7 @@ const MantenimientosList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/mantenimientos/${id}`);
+      await axios.delete(`/api/mantenimientos/${id}`);
       setMantenimientos(mantenimientos.filter((mantenimiento) => mantenimiento._id !== id));
     } catch (error) {
       console.error('Error al eliminar mantenimiento:', error);

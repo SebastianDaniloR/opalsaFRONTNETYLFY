@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import axios from "axios";
+import axios from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import { useMaquinas } from "../context/MaquinasContext"; // Usamos la búsqueda por número de serie
 
@@ -78,7 +78,7 @@ const GenerarOrden = () => {
     };
 
     try {
-      await axios.post("http://localhost:4000/api/ordenes", nuevaOrden);
+      await axios.post("/api/ordenes", nuevaOrden);
       setSuccessMessage("Orden enviada exitosamente.");
       setDescripcionOrden("");
       setNroSerieMaquina("");

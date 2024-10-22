@@ -28,7 +28,7 @@ const CrearNotificacion = () => {
     formData.append("documentoRecordatorio", documentoRecordatorio);
 
     try {
-      const response = await axios.post("/recordatorios", formData, {
+      const response = await axios.post("/api/recordatorios", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

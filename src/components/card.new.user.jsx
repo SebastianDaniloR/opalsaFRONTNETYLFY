@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function cardNewUser() {
   const [latestUser, setLatestUser] = useState(null);
@@ -8,7 +8,7 @@ function cardNewUser() {
   useEffect(() => {
     const fetchLatestUser = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/users');
+        const response = await axios.get('/api/users');
         const users = response.data;
         if (users.length > 0) {
           setLatestUser(users[users.length - 1]); // Obtener el usuario más reciente

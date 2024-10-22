@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import Sidebar from '../components/Sidebar';
 import { FaTrashAlt, FaRegUser } from 'react-icons/fa'; // Añadido el ícono
 import HeaderUsuarios from '../components/HeaderUsuarios';
@@ -13,7 +13,7 @@ function GestionUsuarios() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/users');
+        const response = await axios.get('/api/users');
         setUsers(response.data);
       } catch (error) {
         console.error('Error al obtener usuarios:', error);
@@ -25,7 +25,7 @@ function GestionUsuarios() {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/users/${userId}`);
+      await axios.delete(`/api/users/${userId}`);
       setUsers(users.filter(user => user._id !== userId));
     } catch (error) {
       console.error('Error al eliminar el usuario:', error);
@@ -39,7 +39,7 @@ function GestionUsuarios() {
   const handleRoleChange = async (userId, currentRole) => {
     const newRole = currentRole === 'admin' ? 'user' : 'admin';
     try {
-      await axios.put(`http://localhost:4000/api/users/${userId}/role`, { role: newRole });
+      await axios.put(`/api/users/${userId}/role`, { role: newRole });
       window.location.reload();
     } catch (error) {
       console.error('Error al actualizar el rol:', error);

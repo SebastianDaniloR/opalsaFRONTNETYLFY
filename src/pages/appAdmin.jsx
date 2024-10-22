@@ -31,7 +31,7 @@ const calcularDiasRestantes = (fechaRecordatorio) => {
   useEffect(() => {
     const fetchLatestUser = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/users');
+        const response = await axios.get('/api/users');
         const users = response.data;
         if (users.length > 0) {
           setLatestUser(users[users.length - 1]); // Obtener el usuario más reciente
@@ -47,7 +47,7 @@ const calcularDiasRestantes = (fechaRecordatorio) => {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get('/count');
+        const response = await axios.get('/api/count');
         setUserCount(response.data.count);
       } catch (error) {
         console.error('Error fetching user count:', error);
@@ -64,7 +64,7 @@ const calcularDiasRestantes = (fechaRecordatorio) => {
   const fetchRecordatorios = async () => {
     try {
       // Usamos la nueva ruta para obtener los próximos 10 recordatorios
-      const response = await axios.get("/recordatorios/ultimos");
+      const response = await axios.get("/api/recordatorios/ultimos");
       setRecordatorios(response.data);
     } catch (error) {
       console.error("Error al obtener recordatorios:", error);

@@ -78,7 +78,7 @@ function TransferirComponenteModal({ maquina, componentes, onClose, onComponentT
         throw new Error("Componente no encontrado para transferencia.");
       }
 
-      await axios.put(`/componentes/${componenteAActualizar._id}`, {
+      await axios.put(`/api/componentes/${componenteAActualizar._id}`, {
         maquina: nuevaMaquina._id,
       });
 
@@ -86,7 +86,7 @@ function TransferirComponenteModal({ maquina, componentes, onClose, onComponentT
       console.log("Nueva máquina:", nuevaMaquina.nroSerieMaquina);
 
       // Registro en el historial
-      await axios.post("/movimientos", {
+      await axios.post("/api/movimientos", {
         componenteId: componenteAActualizar._id,
         oldMaquinaId: maquina._id,
         oldMaquinaSerial: maquina.nroSerieMaquina,

@@ -55,7 +55,7 @@ const TransferModal = ({ onClose, elemento }) => {
       await updateElementosRequest(updatedElemento);
       console.log("Elemento transferido a:", selectedCasino);
 
-      await axios.post("/movimientos-elementos", movimientoElm);
+      await axios.post("/api/movimientos-elementos", movimientoElm);
       console.log("Historial de movimientos guardado");
 
       setTransferSuccess(true); // Mostrar mensaje de éxito

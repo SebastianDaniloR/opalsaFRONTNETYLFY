@@ -54,7 +54,7 @@ function TransferirMaquinaModal({ maquina, onClose }) {
       console.log("Datos del movimiento de máquina:", movimiento);
 
       // Registro en el historial de movimientos
-      await axios.post("/moviMaquinas", movimiento);
+      await axios.post("/api/moviMaquinas", movimiento);
       console.log("Historial de movimientos guardado");
 
       setLoading(false); // Ocultar el spinner de carga

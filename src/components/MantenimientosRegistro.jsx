@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useMaquinas } from '../context/MaquinasContext'; // Importamos el contexto
 
 const MantenimientoRegistro = () => {
@@ -71,7 +71,7 @@ const MantenimientoRegistro = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:4000/api/mantenimientos', formData, {
+      const response = await axios.post('/api/mantenimientos', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

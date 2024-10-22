@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaBriefcase, FaMapMarkerAlt, FaIdCard, FaEnvelope } from 'react-icons/fa'; // Importamos los iconos
 
 const Perfil = () => {
@@ -63,7 +63,7 @@ const Perfil = () => {
         return;
       }
       const response = await axios.put(
-        `http://localhost:4000/api/users/${user._id}`,
+        `/api/users/${user._id}`,
         formData,
         { withCredentials: true }
       );

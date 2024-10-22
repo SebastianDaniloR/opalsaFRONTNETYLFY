@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 const ModalRespOrden = ({ isOpen, onClose, orden }) => {
   const [descripcionOrden, setDescripcionOrden] = useState('');
@@ -19,7 +19,7 @@ const ModalRespOrden = ({ isOpen, onClose, orden }) => {
     if (isOpen && orden) {
       const fetchOrden = async () => {
         try {
-          const response = await axios.get(`http://localhost:4000/api/ordenes/${orden._id}`);
+          const response = await axios.get(`/api/ordenes/${orden._id}`);
           setDescripcionOrden(response.data.descripcionOrden);
           setNroSerieMaquina(response.data.maquina ? response.data.maquina.nroSerieMaquina : 'Desconocido');
           setUbicacionMaquina(response.data.maquina ? response.data.maquina.ubicacionMaquina : 'Desconocida');

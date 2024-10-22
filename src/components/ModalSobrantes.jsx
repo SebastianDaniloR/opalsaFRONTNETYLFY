@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import Select from "react-select";
 
 const ModalSobrantes = ({ item, onClose, handleFinalizarOrder }) => {
@@ -16,7 +16,7 @@ const ModalSobrantes = ({ item, onClose, handleFinalizarOrder }) => {
       if (item) {
           try {
               // Suponiendo que tienes un endpoint para obtener los detalles de la orden
-              const response = await axios.get(`http://localhost:4000/api/ordenes/${item._id}`);
+              const response = await axios.get(`/api/ordenes/${item._id}`);
               const { tareaRealizada, elementoOrden, elementoOrdenSobrantes, componentesAsignados, fechaCumplimiento } = response.data;
 
               // Actualiza el estado con los datos obtenidos
@@ -95,7 +95,7 @@ const ModalSobrantes = ({ item, onClose, handleFinalizarOrder }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/ordenes/${item._id}/sobrantes`,
+        `/api/ordenes/${item._id}/sobrantes`,
         data
       );
       console.log("Orden actualizada:", response.data);

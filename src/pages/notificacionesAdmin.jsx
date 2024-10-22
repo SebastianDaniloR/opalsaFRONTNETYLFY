@@ -8,7 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import Modal from "../components/ModalNotificaciones";
 import ModalOrden from "../components/ModalFormOrden";
 import ModalSobrantes from "../components/ModalSobrantes";
-import debounce from "lodash/debounce";
+import debounce from "lodash.debounce";
 
 const ITEMS_PER_PAGE = 8; // Número de elementos por página
 
