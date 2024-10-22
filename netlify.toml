@@ -9,3 +9,9 @@
   to = "/index.html"   # Redirigir a index.html para rutas que no sean de la API
   status = 200          # Este es el código de estado para rutas SPAs
   force = true
+
+# netlify.toml
+
+
+[functions]
+  directory = "src/functions"  # Cambia esto a la ruta donde están tus funciones
