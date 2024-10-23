@@ -47,15 +47,15 @@ export const AuthProvider = ({ children }) => {
       const userData = await getUserDataRequest(userId);
       setUser(userData.data);
   
+      // Almacenar el token en las cookies
+      Cookies.set('token', res.data.token); // Asegúrate de que tu respuesta de login incluya el token
+  
       return res.data;
     } catch (error) {
       setErrors([error.response?.data?.message || 'Error al iniciar sesión']);
       throw error;
     }
   };
-  
-  
-  
 
   const logout = () => {
     Cookies.remove("token");
