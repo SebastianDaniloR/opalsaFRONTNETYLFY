@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { verifyTokenRequest } from '../api/axios'; // Asegúrate de tener la ruta correcta
+import { verifyTokenRequest } from '../api/auth'; // Asegúrate de tener la ruta correcta
 
 export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
