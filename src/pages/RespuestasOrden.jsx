@@ -23,7 +23,7 @@ const RespuestasOrden = () => {
       if (!loading && user) {
         try {
           // Enviar búsqueda (searchTerm) y estado al backend
-          const response = await axios.get(`/ordenes/usuario-autenticado`, {
+          const response = await axios.get(`/api/ordenes/usuario-autenticado`, {
             params: {
               page,
               limit: 8,
