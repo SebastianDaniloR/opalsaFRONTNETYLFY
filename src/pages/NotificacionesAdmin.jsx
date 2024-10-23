@@ -54,7 +54,7 @@ const NotificacionesAdmin = () => {
   // Fetch para Órdenes
   const fetchOrdenes = async (page = 1, estadoOrden = "", searchTerm = "") => {
     try {
-      const response = await axios.get("/ordenes", {
+      const response = await axios.get("/api/ordenes", {
         params: { page, limit: ITEMS_PER_PAGE, estadoOrden, searchTerm },
       });
 
@@ -79,7 +79,7 @@ const NotificacionesAdmin = () => {
   // Fetch para Notificaciones con filtro de fecha
   const fetchNotificaciones = async (page = 1, selectedDate = "") => {
     try {
-      const response = await axios.get("/recordatorios", {
+      const response = await axios.get("/api/recordatorios", {
         params: { page, limit: ITEMS_PER_PAGE, fechaRecordatorio: selectedDate }, // Filtro por fecha
       });
 
