@@ -1,8 +1,8 @@
 import axios from "./axios";
 
-export const getCasinosRequest = () => axios.get("/api/casinos", { withCredentials: true });
+export const getCasinosRequest = () => axios.get("/casinos", { withCredentials: true });
 
-export const getCasinoRequest = (id) => axios.get(`/api/casinos/${id}`, { withCredentials: true });
+export const getCasinoRequest = (id) => axios.get(`/casinos/${id}`, { withCredentials: true });
 
 export const createCasinoRequest = (FormData) => {
   return axios.post("/api/casinos", FormData, {
