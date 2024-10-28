@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { verifyTokenRequest } from '../api/auth'; // Asegúrate de tener la ruta correcta
 
 export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { signin, isAuthenticated, user } = useAuth();
+  const { signin, isAuthenticated, user, setUser } = useAuth();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
 
@@ -24,27 +25,48 @@ export default function LoginPage() {
   });
 
   useEffect(() => {
-    if (isAuthenticated) {
-      if (user?.role === "admin") {
-        navigate("/admin");
+    const checkAuth = async () => {
+      if (isAuthenticated) {
+        // Si ya está autenticado, redirigimos
+        if (user?.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/admin"); // Asegúrate de que esta ruta exista
+        }
       } else {
-        navigate("/admin"); // Asegúrate de que esta ruta exista
+        // Verificar el token al cargar el componente
+        try {
+          const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+          if (token) {
+            const response = await verifyTokenRequest(token);
+            setUser(response.data); // Asigna el usuario al contexto
+            // Redirigir según el rol del usuario
+            if (response.data.role === "admin") {
+              navigate("/admin");
+            } else {
+              navigate("/admin"); // Asegúrate de que esta ruta exista
+            }
+          }
+        } catch (error) {
+          console.error("No se pudo verificar el token:", error);
+          setUser(null);
+        }
       }
-    }
-  }, [isAuthenticated, user, navigate]);
+    };
+
+    checkAuth();
+  }, [isAuthenticated, user, navigate, setUser]);
 
   return (
     <div
-  className="min-h-screen bg-cover bg-center flex flex-col justify-center sm:py-12"
-  style={{ backgroundImage: `url("https://res.cloudinary.com/dtqiwgbbp/image/upload/v1729280502/apgft6gkdtuetbblmbdq.jpg")` }} // Aquí usamos la imagen importada
->
-
+      className="min-h-screen bg-cover bg-center flex flex-col justify-center sm:py-12"
+      style={{ backgroundImage: `url("https://res.cloudinary.com/dtqiwgbbp/image/upload/v1729280502/apgft6gkdtuetbblmbdq.jpg")` }} // Aquí usamos la imagen importada
+    >
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
-          <div className="flex flex-col justify-center mb-4">
-              
+            <div className="flex flex-col justify-center mb-4">
               <img src="https://res.cloudinary.com/dtqiwgbbp/image/upload/v1729095891/wxgrdw88ivy686xsojne.png" alt="Logo" className="w-70 h-44 " /> {/* Aquí está el logo */}
             </div>
             <div>

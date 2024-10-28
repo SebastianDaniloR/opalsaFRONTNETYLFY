@@ -54,7 +54,7 @@ const NotificacionesAdmin = () => {
   // Fetch para Órdenes
   const fetchOrdenes = async (page = 1, estadoOrden = "", searchTerm = "") => {
     try {
-      const response = await axios.get("/ordenes", {
+      const response = await axios.get("/api/ordenes", {
         params: { page, limit: ITEMS_PER_PAGE, estadoOrden, searchTerm },
       });
 
@@ -79,7 +79,7 @@ const NotificacionesAdmin = () => {
   // Fetch para Notificaciones con filtro de fecha
   const fetchNotificaciones = async (page = 1, selectedDate = "") => {
     try {
-      const response = await axios.get("/recordatorios", {
+      const response = await axios.get("/api/recordatorios", {
         params: { page, limit: ITEMS_PER_PAGE, fechaRecordatorio: selectedDate }, // Filtro por fecha
       });
 
@@ -170,9 +170,9 @@ const handleFinalizarOrder = (item) => {
   const handleDeleteItem = async (id, type) => {
     try {
       if (type === "recordatorio") {
-        await axios.delete(`/recordatorios/${id}`);
+        await axios.delete(`/api/recordatorios/${id}`);
       } else if (type === "orden") {
-        await axios.delete(`/ordenes/${id}`);
+        await axios.delete(`/api/ordenes/${id}`);
       }
       setCombinedItems((prevItems) => prevItems.filter((item) => item._id !== id));
     } catch (error) {
@@ -183,7 +183,7 @@ const handleFinalizarOrder = (item) => {
   const handleCheckboxChange = useCallback(
     debounce(async (id, visto) => {
       try {
-        const response = await axios.patch(`/recordatorios/${id}/visto`, {
+        const response = await axios.patch(`/api/recordatorios/${id}/visto`, {
           visto: !visto,
         });
         setCombinedItems((prevItems) =>
