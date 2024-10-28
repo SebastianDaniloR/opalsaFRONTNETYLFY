@@ -37,8 +37,8 @@ function App() {
                     <Route element={<ProtectedRoute />}>
                       <Route path="/" element={<HomePage />} />
                       <Route path="/profile" element={<ProfilePage />} />
-                      <Route path="/registro-mantenimiento" element={<RegistroMantenimiento />} />
-                      <Route path="/respuestas-orden" element={<RespuestasOrden />} />
+                      <Route path="/RegistroMantenimiento" element={<RegistroMantenimiento />} />
+                      <Route path="/RespuestasOrden" element={<RespuestasOrden />} />
                       <Route element={<ProtectedAdmin />}>
                         <Route path="/admin" element={<AppAdmin />} />
                         <Route path="/usuarios" element={<GestionUsuarios />} />
