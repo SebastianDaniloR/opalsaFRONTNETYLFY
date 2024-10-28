@@ -42,7 +42,7 @@ function App() {
                       <Route element={<ProtectedAdmin />}>
                         <Route path="/admin" element={<AppAdmin />} />
                         <Route path="/usuarios" element={<GestionUsuarios />} />
-                        <Route path="/notificaciones" element={<NotificacionesAdmin />} />
+                        <Route path="/notifi" element={<NotificacionesAdmin />} />
                       </Route>
                       <Route path="/Historial" element={<Historial />} />
                       <Route path="/GestionMaquinas" element={<GestionMaquinas />} />
