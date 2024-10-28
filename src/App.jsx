@@ -43,9 +43,9 @@ function App() {
                         <Route path="/admin" element={<AppAdmin />} />
                         <Route path="/usuarios" element={<GestionUsuarios />} />
                         <Route path="/notificaciones" element={<NotificacionesAdmin />} />
-                        <Route path="/GestionMaquinas" element={<GestionMaquinas />} />
                       </Route>
                       <Route path="/Historial" element={<Historial />} />
+                      <Route path="/GestionMaquinas" element={<GestionMaquinas />} />
                     </Route>
                   </Routes>
                 </BrowserRouter>
