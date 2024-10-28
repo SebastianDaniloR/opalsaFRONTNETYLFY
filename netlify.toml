@@ -1,5 +1,4 @@
-[[redirects]]
-  from = "/api/*"       # No redirigir las rutas de la API
+[[redirects]]   from = "/api/*"       # No redirigir las rutas de la API
   to = "/api/:splat"    # Permite que las rutas de la API se manejen correctamente
   status = 200
   force = true
@@ -15,3 +14,10 @@
   to = "/index.html"    # Redirigir solo a index.html para las rutas que no sean de la API o de archivos estáticos
   status = 200
   force = true
+ tus funciones
+ tus funciones
+ tus funciones
+ tus funciones
+ tus funciones
+ tus funciones
+ tus funciones

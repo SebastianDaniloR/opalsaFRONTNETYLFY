@@ -10,7 +10,9 @@ export const getMaquinasRequest = (page, limit = 8, marca = "") => {
 export const buscarMaquinaPorNumeroDeSerieRequest = async (nroSerieMaquina) => {
   return axios.get(`/api/maquina/serial`, {
     params: { nroSerieMaquina },
-   
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`, // Asegúrate de incluir el token de autenticación
+    },
   });
 };
 
@@ -20,6 +22,9 @@ export const buscarMaquinaPorNumeroDeSerieRequest = async (nroSerieMaquina) => {
 export const buscarMaquinaPorSerieFlexibleRequest = async (nroSerieMaquina, exact = false) => {
   return axios.get(`/api/maquina/buscar/serie-flexible`, {
     params: { nroSerieMaquina, exact }, // Se pasa el número de serie y si es búsqueda exacta
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`, // Incluir el token de autenticación
+    },
   });
 };
 
