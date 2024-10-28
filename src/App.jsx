@@ -43,10 +43,9 @@ function App() {
                         <Route path="/admin" element={<AppAdmin />} />
                         <Route path="/usuarios" element={<GestionUsuarios />} />
                         <Route path="/notificaciones" element={<NotificacionesAdmin />} />
-                        <Route path="/gestion-maquinas" element={<GestionMaquinas />} />
+                        <Route path="/GestionMaquinas" element={<GestionMaquinas />} />
                       </Route>
-                      <Route path="/historial" element={<Historial />} />
-                      
+                      <Route path="/Historial" element={<Historial />} />
                     </Route>
                   </Routes>
                 </BrowserRouter>
